@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
@@ -43,6 +44,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     KeycloakAngularModule,
     ApiModule.forRoot(AppModule.getConfiguration),
     DashboardComponent,
+    FontAwesomeModule,
     ShopComponent,
     NavbarComponent,
     BrowserAnimationsModule,

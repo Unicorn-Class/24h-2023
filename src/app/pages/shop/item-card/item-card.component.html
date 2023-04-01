@@ -9,7 +9,8 @@
   </div>
   <img [src]="item.image" [alt]='item.name'>
   <div class="card-footer">
-    <button *ngIf="!item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
-    <button *ngIf="item.alreadyInInventory" class="bought">Déjà acheté</button>
+    <button *ngIf="displayButtonBuy && !item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
+    <button *ngIf="displayButtonBuy && item.alreadyInInventory" class="bought">Déjà acheté</button>
+    <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
   </div>
 </div>
