@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {Item, ItemShopUI} from "../../../api/model/item";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheckCircle, faMoneyBill, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCheckCircle, faMoneyBill, faInfoCircle, faCoins } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
@@ -17,6 +17,7 @@ export class ItemCardComponent implements OnInit {
   faCheck = faCheckCircle;
   faMoneyBill = faMoneyBill;
   faInfoCircle = faInfoCircle;
+  iconeRarity = faCoins
   @Input() item!: Item & ItemShopUI;
   @Output() buyItem = new EventEmitter();
   @Output() equipItem = new EventEmitter();
@@ -29,6 +30,7 @@ export class ItemCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   changeDisplay() {

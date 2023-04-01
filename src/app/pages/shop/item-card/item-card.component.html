@@ -9,6 +9,9 @@
     <span>
       <fa-icon [icon]="faInfoCircle"></fa-icon>{{ item.type }}
     </span>
+    <span>
+      <fa-icon [icon]="iconeRarity"></fa-icon>{{ item.rarity }}
+    </span>
   </div>
     <img *ngIf="displayImage" [src]="item.image"[alt]='item.name' (click) = changeDisplay() >
   <div  *ngIf="!displayImage"  (click) = changeDisplay() >
