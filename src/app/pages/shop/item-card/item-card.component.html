@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-header">
+    <span class="item-title">
+      {{ item.name }} ({{item.sellingPrice}})
+    </span>
+  </div>
+  <img [src]="item.image" [alt]='item.name'>
+  <button (click)="buyItem.emit()">Acheter</button>
+</div>

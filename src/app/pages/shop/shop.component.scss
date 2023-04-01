@@ -1,0 +1,6 @@
+div.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  height: 100%;
+  overflow-y: auto;
+}
