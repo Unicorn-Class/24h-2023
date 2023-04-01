@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {Item} from "../../../api/model/item";
+import {Item, ItemShopUI} from "../../../api/model/item";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
@@ -15,7 +15,8 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class ItemCardComponent implements OnInit {
   faCheck = faCheckCircle;
-  @Input() item!: Item;
+  faMoneyBill = faMoneyBill;
+  @Input() item!: Item & ItemShopUI;
   @Output() buyItem = new EventEmitter();
   @Output() equipItem = new EventEmitter();
   @Input() displayButtonBuy = true;

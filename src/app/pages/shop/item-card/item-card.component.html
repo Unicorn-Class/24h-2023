@@ -1,12 +1,17 @@
 <div class="card">
   <div class="card-header">
     <span class="item-title">
-      {{ item.name }} ({{item.sellingPrice}})
-      <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
+      {{ item.name }}
+    </span>
+    <span class="item-price">
+      {{ item.sellingPrice }} <fa-icon [icon]="faMoneyBill"></fa-icon>
     </span>
   </div>
   <img [src]="item.image" [alt]='item.name'>
-
-  <button *ngIf="displayButtonBuy" (click)="buyItem.emit()">Acheter</button>
+  <div class="card-footer">
+    <button *ngIf="displayButtonBuy && !item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
+    <button *ngIf="displayButtonBuy && item.alreadyInInventory" class="bought">Déjà acheté</button>
+    <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
+  </div>
   <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()">Equiper</button>
 </div>
