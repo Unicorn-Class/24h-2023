@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { TeamInventoryService } from './../../api/api/teamInventory.service';
+import {Component, inject, OnInit} from '@angular/core';
 import {Team} from "../../api/model/team";
 import {TeamsService} from "../../api/api/teams.service";
-import {TeamInventoryService} from "../../api/api/teamInventory.service";
 import {CommonModule} from "@angular/common";
 import {TeamInventory } from 'src/app/api/model/teamInventory';
 import {FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ItemCardComponent} from "../shop/item-card/item-card.component";
+import { Item } from 'src/app/api/model/item';
+import {ToastrService} from "ngx-toastr";
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -21,7 +24,10 @@ export class DashboardComponent implements OnInit {
   fetchStatus: 'loading' | 'success' | 'error' = 'loading';
   ourTeam!: Team;
   ourTeamInventory!: TeamInventory;
-  constructor(public teamsService: TeamsService, public teamInventory : TeamInventoryService) {
+  private toastr: ToastrService = inject(ToastrService);
+  constructor(public teamsService: TeamsService,
+     public teamInventory : TeamInventoryService
+     ) {
   }
 
   ngOnInit(): void {
@@ -44,5 +50,18 @@ export class DashboardComponent implements OnInit {
       this.fetchStatus = 'success';
     })
   }
+
+  equipItem(item: Item) {
+    if (item.id) {
+      this.teamInventory.equipItemInInventory(item.id, 11).subscribe(result => {
+        if (result.code === 'OK') {
+          this.toastr.success('Equipement ok')
+        } else {
+          this.toastr.error(result.message)
+        }
+      })
+    }
+  }
+
 
 }

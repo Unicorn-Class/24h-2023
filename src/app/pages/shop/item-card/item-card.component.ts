@@ -17,7 +17,9 @@ export class ItemCardComponent implements OnInit {
   faCheck = faCheckCircle;
   @Input() item!: Item;
   @Output() buyItem = new EventEmitter();
+  @Output() equipItem = new EventEmitter();
   @Input() displayButtonBuy = true;
+  @Input() displayButtonEquip = false;
   @Input() isEquipped !: boolean;
   constructor() { }
 

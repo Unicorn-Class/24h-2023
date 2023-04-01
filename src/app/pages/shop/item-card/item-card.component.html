@@ -8,4 +8,5 @@
   <img [src]="item.image" [alt]='item.name'>
 
   <button *ngIf="displayButtonBuy" (click)="buyItem.emit()">Acheter</button>
+  <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()">Equiper</button>
 </div>
