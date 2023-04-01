@@ -1,0 +1,13 @@
+export * from './hello.service';
+import { HelloService } from './hello.service';
+export * from './items.service';
+import { ItemsService } from './items.service';
+export * from './races.service';
+import { RacesService } from './races.service';
+export * from './teamInventory.service';
+import { TeamInventoryService } from './teamInventory.service';
+export * from './teams.service';
+import { TeamsService } from './teams.service';
+export * from './transactions.service';
+import { TransactionsService } from './transactions.service';
+export const APIS = [HelloService, ItemsService, RacesService, TeamInventoryService, TeamsService, TransactionsService];
