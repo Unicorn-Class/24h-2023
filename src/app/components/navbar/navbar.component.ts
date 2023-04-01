@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.teamsService.getById(11).subscribe(result => {
       this.ourTeam = result;
+      this.fetchStatus = 'success';
     })
   }
 

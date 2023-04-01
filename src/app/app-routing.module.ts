@@ -6,6 +6,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { RacesComponent } from './pages/races/races.component';
 import {StatisticsComponent} from "./pages/statistics/statistics.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {SimulatorComponent} from "./pages/simulator/simulator.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'race',
     component: RacesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'simulator',
+    component: SimulatorComponent,
     canActivate: [AuthGuard]
   },
   {
