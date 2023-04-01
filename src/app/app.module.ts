@@ -9,6 +9,7 @@ import {Configuration} from "./api/configuration";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ShopComponent } from './pages/shop/shop.component';
 import { HistoryComponent } from './components/history/history.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -30,7 +31,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HistoryComponent
   ],
   imports: [
@@ -39,7 +39,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
     HttpClientModule,
     KeycloakAngularModule,
     ApiModule.forRoot(AppModule.getConfiguration),
-    DashboardComponent
+    DashboardComponent,
+    ShopComponent,
+    NavbarComponent,
   ],
   providers: [
     {

@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Team} from "../../api/model/team";
 import {TeamsService} from "../../api/api/teams.service";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.component.html',
+  imports: [
+    CommonModule
+  ],
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
@@ -17,8 +21,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamsService.getById(11).subscribe(result => {
-      this.fetchStatus = 'success';
       this.ourTeam = result;
+      this.fetchStatus = 'success';
     })
   }
 

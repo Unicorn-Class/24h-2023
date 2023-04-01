@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #102eff, #d2379b);
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  color: white;
+}
+
+div.container {
+  padding: 1.5em;
+}
