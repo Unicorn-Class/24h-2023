@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
-
+import {Team} from "../../api/model/team";
+import {TeamsService} from "../../api/api/teams.service";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,10 +13,13 @@ import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
   ]
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  ourTeam!: Team;
+  constructor(public teamsService: TeamsService) { }
 
   ngOnInit(): void {
+    this.teamsService.getById(11).subscribe(result => {
+      this.ourTeam = result;
+    })
   }
 
 }

@@ -1,7 +1,4 @@
 <div class="container">
-  <h1 *ngIf="fetchStatus === 'success'">
-    {{ ourTeam.name }} ({{ ourTeam.score }} - {{ ourTeam.coin }})
-
     <h1>Inventaire</h1>
     <div class="container" *ngIf="fetchStatus === 'success'">
       <div class="shop-grid">
@@ -18,5 +15,4 @@
         </app-item-card>
       </div>
     </div>
-  </h1>
 </div>

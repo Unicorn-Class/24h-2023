@@ -34,11 +34,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.teamsService.getById(11).subscribe(result => {
-      this.ourTeam = result;
-      this.getInventory();
-    })
-
+    this.getInventory();
   }
 
   equipItem(item: Item) {
