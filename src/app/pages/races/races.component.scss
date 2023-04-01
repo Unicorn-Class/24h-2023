@@ -1,0 +1,41 @@
+div.top-bar {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darkblue;
+      transition: ease-in-out 100ms;
+    }
+  }
+}
+
+div.result {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background-color: white;
+  color: black;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+
+  div.result-info {
+    span.time {
+      margin-right: 8px;
+    }
+  }
+}
