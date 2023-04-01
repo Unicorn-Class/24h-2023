@@ -68,4 +68,19 @@ div.card {
     margin-right: 5px;
     margin-left: 5px;
   }
+
+  button.sell {
+    background-color: indianred;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darkred;
+      transition: ease-in-out 100ms;
+    }
+  }
 }
