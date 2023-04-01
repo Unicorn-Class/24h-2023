@@ -48,7 +48,7 @@ export class RacesComponent implements OnInit {
     this.fetchStatus = 'fetchResult';
     this.racesService.run(this.raceNumber, 11).subscribe(result => {
       this.fetchStatus = 'success';
-      this.runResultList.push(result);
+      this.runResultList = [result, ...this.runResultList];
     })
   }
 
@@ -60,7 +60,7 @@ export class RacesComponent implements OnInit {
       race: race
     } as RunResult))));
     forkJoin(runList).subscribe(resultList => {
-      this.runResultList.push(...resultList);
+      this.runResultList = [...resultList, ...this.runResultList];
       this.fetchStatus = 'success';
     })
   }
