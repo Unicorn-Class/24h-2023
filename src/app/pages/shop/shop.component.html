@@ -4,7 +4,7 @@
     <input type="text" placeholder="Rechercher..." [(ngModel)]="searchQuery" (ngModelChange)="search($event)">
   </div>
   <div *ngIf="fetchStatus === 'success'" class="shop-grid">
-    <app-item-card *ngFor="let item of displayedItemList" [item]="item" (buyItem)="buyItem(item)"></app-item-card>
+    <app-item-card *ngFor="let item of displayedItemList" [item]="item" [displayButtonBuy]="true" (buyItem)="buyItem(item)"></app-item-card>
   </div>
 </div>
 

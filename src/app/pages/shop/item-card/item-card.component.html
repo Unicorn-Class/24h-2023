@@ -4,7 +4,7 @@
       {{ item.name }}
     </span>
     <span class="item-price">
-      {{ item.sellingPrice }}
+      {{ item.sellingPrice }} <fa-icon [icon]="faMoneyBill"></fa-icon>
     </span>
   </div>
   <img [src]="item.image" [alt]='item.name'>
