@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {TeamsService} from "../../api/api/teams.service";
 import {TeamInventoryService} from "../../api/api/teamInventory.service";
 import {forkJoin, Observable} from "rxjs";
+import {SpinnerComponent} from "../../components/spinner/spinner.component";
 
 @Component({
   selector: 'app-shop',
@@ -16,7 +17,8 @@ import {forkJoin, Observable} from "rxjs";
   imports: [
     CommonModule,
     FormsModule,
-    ItemCardComponent
+    ItemCardComponent,
+    SpinnerComponent
   ],
   styleUrls: ['./shop.component.scss']
 })

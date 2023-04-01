@@ -12,5 +12,5 @@
 import { Inventory } from './inventory';
 
 export interface TeamInventory {
-    items?: Array<Inventory>;
+    items: Array<Inventory>;
 }
