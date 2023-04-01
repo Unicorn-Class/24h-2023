@@ -20,7 +20,8 @@ import { TransactionsService } from './api/transactions.service';
     RacesService,
     TeamInventoryService,
     TeamsService,
-    TransactionsService ]
+    TransactionsService
+  ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<ApiModule> {

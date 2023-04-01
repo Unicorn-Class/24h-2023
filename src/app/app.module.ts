@@ -1,10 +1,28 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {ApiModule} from "./api/api.module";
 import {HttpClientModule} from "@angular/common/http";
+import {Configuration} from "./api/configuration";
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://185.98.136.60:8080',
+        realm: 'codelemans',
+        clientId: 'app-defi-24h'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
+}
 
 @NgModule({
   declarations: [
@@ -14,9 +32,29 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ApiModule
+    KeycloakAngularModule,
+    ApiModule.forRoot(AppModule.getConfiguration)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  static getConfiguration(): Configuration {
+    return new Configuration(
+      {
+        username: 'unicorn-of-code',
+        password: '7u4P3#Fo^7KN*fGp',
+        withCredentials: true
+      }
+    );
+  }
+
+}
