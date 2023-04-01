@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {Item, ItemShopUI} from "../../../api/model/item";
 import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheckCircle, faMoneyBill, faInfoCircle, faCoins } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faMoneyBill, faInfoCircle, faCoins,faIceCream,faDotCircle, faGem } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
@@ -17,7 +17,7 @@ export class ItemCardComponent implements OnInit {
   faCheck = faCheckCircle;
   faMoneyBill = faMoneyBill;
   faInfoCircle = faInfoCircle;
-  iconeRarity = faCoins
+  iconeRarity = faDotCircle
   @Input() item!: Item & ItemShopUI;
   @Output() buyItem = new EventEmitter();
   @Output() equipItem = new EventEmitter();
@@ -30,7 +30,11 @@ export class ItemCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+      if(this.item.rarity === 'Mythical'){
+        this.iconeRarity = faGem;
+      }else if (this.item.rarity === 'Rare') {
+        this.iconeRarity =  faCoins;
+      }
   }
 
   changeDisplay() {
