@@ -2,8 +2,10 @@
   <div class="card-header">
     <span class="item-title">
       {{ item.name }} ({{item.sellingPrice}})
+      <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
     </span>
   </div>
   <img [src]="item.image" [alt]='item.name'>
-  <button (click)="buyItem.emit()">Acheter</button>
+
+  <button *ngIf="displayButtonBuy" (click)="buyItem.emit()">Acheter</button>
 </div>

@@ -2,12 +2,11 @@
   <h1 *ngIf="fetchStatus === 'success'">{{ ourTeam.name }} ({{ ourTeam.score }} - {{ ourTeam.coin }})
 
 <div *ngIf="fetchStatus === 'success'">
-
-    <div class="container"  *ngFor="let item of ourTeamInventory.items">
-        <h6> {{item.item?.name}}
-          <span *ngIf="item.isEquipped">
-            <fa-icon [icon]="faCheck"></fa-icon>
-          </span>
-        </h6>
+    <div class="shop-grid"  *ngFor="let item of ourTeamInventory.items">
+        <app-item-card
+        [item]="item.item!"
+        [isEquipped]="item.isEquipped!"
+        [displayButtonBuy]="false">
+      </app-item-card>
     </div>
 </div>
