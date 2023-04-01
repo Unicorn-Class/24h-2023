@@ -1,37 +1,40 @@
 <div class="stats-bar">
-  <div class="stat">
-    <fa-icon [icon]="faThermometerThreeQuarters"></fa-icon>
-    <span class="label">Power: </span>
-    <span class="value">{{ power }} /60</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faAngleDoubleRight"></fa-icon>
-    <span class="label">Acceleration: </span>
-    <span class="value">{{ acceleration }} /60</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faWeightHanging"></fa-icon>
-    <span class="label">Grip: </span>
-    <span class="value">{{ grip }}/60</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faWheelchair"></fa-icon>
-    <span class="label">Handling ability: </span>
-    <span class="value">{{ maniability }}/60</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faWeightHanging"></fa-icon>
-    <span class="label">Weight: </span>
-    <span class="value">{{ weight }}/10</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faExclamationCircle"></fa-icon>
-    <span class="label">Wear: </span>
-    <span class="value">{{ wear }}/100</span>
-  </div>
-  <div class="stat">
-    <fa-icon [icon]="faGasPump"></fa-icon>
-    <span class="label">Energy: </span>
-    <span class="value">{{ energy }}/60</span>
-  </div>
+  <span class="loader" *ngIf="fetchStatus === 'loading'"></span>
+  <ng-container *ngIf="fetchStatus === 'success'">
+    <div class="stat">
+      <fa-icon [icon]="faThermometerThreeQuarters"></fa-icon>
+      <span class="label">Puissance : </span>
+      <span class="value">{{ power }} /60</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faAngleDoubleRight"></fa-icon>
+      <span class="label">Accélération : </span>
+      <span class="value">{{ acceleration }} /60</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faWeightHanging"></fa-icon>
+      <span class="label">Adhérence : </span>
+      <span class="value">{{ grip }}/60</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faWheelchair"></fa-icon>
+      <span class="label">Maniabilité : </span>
+      <span class="value">{{ maniability }}/60</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faWeightHanging"></fa-icon>
+      <span class="label">Poids : </span>
+      <span class="value">{{ weight }}/100</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faExclamationCircle"></fa-icon>
+      <span class="label">Usure : </span>
+      <span class="value">{{ wear }}/100</span>
+    </div>
+    <div class="stat">
+      <fa-icon [icon]="faGasPump"></fa-icon>
+      <span class="label">Consommation : </span>
+      <span class="value">{{ energy }}/60</span>
+    </div>
+  </ng-container>
 </div>

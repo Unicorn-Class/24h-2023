@@ -6,6 +6,9 @@ import { RunResult } from 'src/app/api/model/runResult';
 import {Race} from "../../api/model/race";
 import {catchError, forkJoin, of} from "rxjs";
 import {SpinnerComponent} from "../../components/spinner/spinner.component";
+import {FlatButtonComponent} from "../../components/flat-button/flat-button.component";
+import {faClock, faCross, faMedal} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'races',
@@ -16,15 +19,20 @@ import {SpinnerComponent} from "../../components/spinner/spinner.component";
     CommonModule,
     FormsModule,
     NgIf,
-    SpinnerComponent
+    SpinnerComponent,
+    FlatButtonComponent,
+    FontAwesomeModule
   ]
 })
 export class RacesComponent implements OnInit {
-  fetchStatus: 'loading' | 'success' | 'error' = 'loading';
+  fetchStatus: 'loading' | 'success' | 'error' | 'fetchResult' = 'loading';
   raceResult!: RunResult;
   raceNumber: number = 1;
   raceList: Race[] = [];
   runResultList: RunResult[] = [];
+  faMedal = faMedal;
+  fail = faCross;
+  clock = faClock;
   private racesService: RacesService = inject(RacesService);
 
   constructor() { }
@@ -37,8 +45,7 @@ export class RacesComponent implements OnInit {
   }
 
   onStart(): void {
-    this.fetchStatus = 'loading';
-    this.runResultList = [];
+    this.fetchStatus = 'fetchResult';
     this.racesService.run(this.raceNumber, 11).subscribe(result => {
       this.fetchStatus = 'success';
       this.runResultList.push(result);
@@ -46,15 +53,14 @@ export class RacesComponent implements OnInit {
   }
 
   runAll() {
-    this.fetchStatus = 'loading';
-    this.runResultList = [];
+    this.fetchStatus = 'fetchResult';
     const runList = [];
     for (const race of this.raceList) runList.push(this.racesService.run(race.id,11).pipe(catchError(() => of({
       medal: undefined,
       race: race
     } as RunResult))));
     forkJoin(runList).subscribe(resultList => {
-      this.runResultList = resultList;
+      this.runResultList.push(...resultList);
       this.fetchStatus = 'success';
     })
   }
