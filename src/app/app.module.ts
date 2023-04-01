@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { RaceCardComponent } from './pages/races/race-card/race-card.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StatBarComponent } from './components/stat-bar/stat-bar.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -51,6 +52,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     NavbarComponent,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    StatBarComponent,
   ],
   providers: [
     {

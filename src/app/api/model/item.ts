@@ -12,13 +12,13 @@
 import { ItemStatistics } from './itemStatistics';
 
 export interface Item {
-    id?: number;
-    name?: string;
-    type?: string;
-    sellingPrice?: number;
+    id: number;
+    name: string;
+    type: string;
+    sellingPrice: number;
     image?: string;
     rarity?: string;
-    statistiques?: Array<ItemStatistics>;
+    statistiques: Array<ItemStatistics>;
 }
 
 export interface ItemShopUI {
