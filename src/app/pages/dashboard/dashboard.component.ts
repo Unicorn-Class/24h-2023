@@ -36,6 +36,23 @@ export class DashboardComponent implements OnInit {
 
       this.fetchStatus = 'success';
     })
+    this.getInventory();
+  }
+
+  equipItem(item: Item) {
+    if (item.id) {
+      this.teamInventory.equipItemInInventory(11,item.id).subscribe(result => {
+        if (result.code === 'OK') {
+          this.toastr.success('Equipement ok')
+          this.getInventory();
+        } else {
+          this.toastr.error(result.message)
+        }
+      })
+    }
+  }
+
+  getInventory() {
 
     this.teamInventory.getTeamInventory(11).subscribe(result => {
       this.ourTeamInventory = result;
@@ -49,18 +66,6 @@ export class DashboardComponent implements OnInit {
 
       this.fetchStatus = 'success';
     })
-  }
-
-  equipItem(item: Item) {
-    if (item.id) {
-      this.teamInventory.equipItemInInventory(item.id, 11).subscribe(result => {
-        if (result.code === 'OK') {
-          this.toastr.success('Equipement ok')
-        } else {
-          this.toastr.error(result.message)
-        }
-      })
-    }
   }
 
 
