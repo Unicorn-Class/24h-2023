@@ -13,4 +13,5 @@
     <button *ngIf="displayButtonBuy && item.alreadyInInventory" class="bought">Déjà acheté</button>
     <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
   </div>
+  <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()">Equiper</button>
 </div>

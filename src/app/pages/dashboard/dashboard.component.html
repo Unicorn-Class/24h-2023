@@ -10,6 +10,8 @@
           [item]="item.item!"
           [isEquipped]="item.isEquipped!"
           [displayButtonBuy]="false"
+          [displayButtonEquip] ="true"
+          (equipItem)="equipItem(item.item!)"
         >
         </app-item-card>
       </div>
