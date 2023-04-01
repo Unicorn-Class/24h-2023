@@ -1,3 +1,5 @@
+import { ItemSellRequest } from './../../api/model/itemSellRequest';
+import { ItemsService } from './../../api/api/items.service';
 import { TeamInventoryService } from './../../api/api/teamInventory.service';
 import {Component, inject, OnInit} from '@angular/core';
 import {Team} from "../../api/model/team";
@@ -26,7 +28,8 @@ export class DashboardComponent implements OnInit {
   ourTeamInventory!: TeamInventory;
   private toastr: ToastrService = inject(ToastrService);
   constructor(public teamsService: TeamsService,
-     public teamInventory : TeamInventoryService
+     public teamInventory : TeamInventoryService,
+     public itemsService : ItemsService
      ) {
   }
 
@@ -51,6 +54,24 @@ export class DashboardComponent implements OnInit {
       })
     }
   }
+
+  sellItem(item: Item) {
+    if (item.id) {
+      let itemRequest : ItemSellRequest = {
+        itemId : item.id,
+        price : 9999
+      }
+      this.itemsService.sellToMarketplace(itemRequest,11).subscribe(result => {
+        if (result.code === 'OK') {
+          this.toastr.success('Vente ok')
+          this.getInventory();
+        } else {
+          this.toastr.error(result.message)
+        }
+      })
+    }
+  }
+
 
   getInventory() {
 

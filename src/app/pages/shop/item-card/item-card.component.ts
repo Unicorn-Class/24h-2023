@@ -19,8 +19,10 @@ export class ItemCardComponent implements OnInit {
   @Input() item!: Item & ItemShopUI;
   @Output() buyItem = new EventEmitter();
   @Output() equipItem = new EventEmitter();
+  @Output() sellItem = new EventEmitter();
   @Input() displayButtonBuy = true;
   @Input() displayButtonEquip = false;
+  @Input() displayButtonSell = false;
   @Input() isEquipped !: boolean;
   constructor() { }
 
