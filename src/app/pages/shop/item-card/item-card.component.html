@@ -6,6 +6,9 @@
     <span class="item-price">
       {{ item.sellingPrice }} <fa-icon [icon]="faMoneyBill"></fa-icon>
     </span>
+    <span>
+      <fa-icon [icon]="faInfoCircle"></fa-icon>{{ item.type }}
+    </span>
   </div>
     <img *ngIf="displayImage" [src]="item.image"[alt]='item.name' (click) = changeDisplay() >
   <div  *ngIf="!displayImage"  (click) = changeDisplay() >
