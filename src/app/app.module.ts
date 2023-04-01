@@ -12,6 +12,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { HistoryComponent } from './components/history/history.component';
+import { ItemCardComponent } from './pages/shop/item-card/item-card.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
+
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
@@ -43,6 +47,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     FontAwesomeModule,
     ShopComponent,
     NavbarComponent,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {

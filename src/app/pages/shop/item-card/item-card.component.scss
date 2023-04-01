@@ -1,0 +1,16 @@
+div.card {
+  max-width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin: 8px;
+
+  div.card-header {
+    span.item-title {
+      font-size: 1.2em;
+    }
+  }
+}
