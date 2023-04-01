@@ -12,11 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { HistoryComponent } from './components/history/history.component';
-import { ItemCardComponent } from './pages/shop/item-card/item-card.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-import { RaceCardComponent } from './pages/races/race-card/race-card.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StatBarComponent } from './components/stat-bar/stat-bar.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {

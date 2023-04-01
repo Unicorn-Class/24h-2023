@@ -1,14 +1,14 @@
 <div *ngFor="let run of allRun">
   <div>Time : {{ run.time }}</div>
   <div>
-    Race : {{ run.race?.name }}
+    Race : {{ run.race.name }}
 
     <div *ngFor="let run of allRun">
       <div>Time : {{ run.time }}</div>
       <div>
-        Race : {{ run.race?.name }}
+        Race : {{ run.race.name }}
 
-        <div *ngFor="let section of run.race?.sections">
+        <div *ngFor="let section of run.race.sections">
               <div>
                 <p>{{section.type}}</p>
                 <p>{{section.terrain}}</p>

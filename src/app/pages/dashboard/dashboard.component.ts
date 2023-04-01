@@ -10,6 +10,7 @@ import {FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ItemCardComponent} from "../shop/item-card/item-card.component";
 import { Item } from 'src/app/api/model/item';
 import {ToastrService} from "ngx-toastr";
+import {SpinnerComponent} from "../../components/spinner/spinner.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,8 @@ import {ToastrService} from "ngx-toastr";
   imports: [
     CommonModule,
     ItemCardComponent,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SpinnerComponent
   ],
   styleUrls: ['./dashboard.component.scss']
 })
@@ -35,6 +37,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInventory();
+
   }
 
   equipItem(item: Item) {

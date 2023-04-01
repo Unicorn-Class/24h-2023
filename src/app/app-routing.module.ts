@@ -4,6 +4,7 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import { HistoryComponent } from './components/history/history.component';
 import { RacesComponent } from './pages/races/races.component';
+import {StatisticsComponent} from "./pages/statistics/statistics.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'race',
     component: RacesComponent
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent
   },
   {
     path: '**',

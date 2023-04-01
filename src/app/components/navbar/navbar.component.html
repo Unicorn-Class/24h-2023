@@ -1,24 +1,32 @@
 <nav id="menu">
-  <div class="menu-item">
-    <div class="menu-text">
-      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <div class="links">
+    <div class="menu-item">
+      <div class="menu-text">
+        <a routerLink="/dashboard" routerLinkActive="active">Inventaire</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <a routerLink="/race" routerLinkActive="active">Courses</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <a routerLink="/shop" routerLinkActive="active">Boutique</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <a routerLink="/statistics" routerLinkActive="active">Statistiques</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-text">
+        <a routerLink="/history">Historique</a>
+      </div>
     </div>
   </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <a routerLink="/race" routerLinkActive="active">Run</a>
-    </div>
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <a routerLink="/shop" routerLinkActive="active">Shop</a>
-    </div>
-  </div>
-  <div class="menu-item">
-    <div class="menu-text">
-      <a routerLink="/history">History</a>
-    </div>
-  </div>
+
   <div class="menu-item info">
     <div class="menu-text">
           {{ ourTeam.name }} ({{ ourTeam.score }} - {{ ourTeam.coin }} )

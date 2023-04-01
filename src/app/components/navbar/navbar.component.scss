@@ -5,8 +5,14 @@ nav {
   margin: 0 auto;
   flex-wrap: wrap;
   background-color: black;
+  justify-content: space-between;
 
+  div.links {
+    display: flex;
+    flex-direction: row;
+  }
 }
+
 .info{
   font-weight: bolder;
 }

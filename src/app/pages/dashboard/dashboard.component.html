@@ -1,18 +1,21 @@
 <div class="container">
-    <h1>Inventaire</h1>
-    <div class="container" *ngIf="fetchStatus === 'success'">
-      <div class="shop-grid">
-        <app-item-card
-          *ngFor="let item of ourTeamInventory.items"
-          [item]="item.item!"
-          [isEquipped]="item.isEquipped!"
-          [displayButtonBuy]="false"
-          [displayButtonEquip] ="true"
-          [displayButtonSell] ="true"
-          (equipItem)="equipItem(item.item!)"
-          (sellItem)="sellItem(item.item!)"
-        >
-        </app-item-card>
-      </div>
+  <h1>Inventaire</h1>
+  <div class="page-content" *ngIf="fetchStatus === 'loading'">
+    <app-spinner></app-spinner>
+  </div>
+  <div class="page-content" *ngIf="fetchStatus === 'success'">
+    <div class="item-grid">
+      <app-item-card
+        *ngFor="let item of ourTeamInventory.items"
+        [item]="item.item!"
+        [isEquipped]="item.isEquipped!"
+        [displayButtonBuy]="false"
+        [displayButtonEquip] ="true"
+        [displayButtonSell] ="true"
+        (equipItem)="equipItem(item.item!)"
+        (sellItem)="sellItem(item.item!)"
+      >
+      </app-item-card>
     </div>
+  </div>
 </div>
