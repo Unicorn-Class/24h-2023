@@ -6,11 +6,58 @@ div.card {
   display: flex;
   flex-direction: column;
   padding: 8px;
-  margin: 8px;
 
   div.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
     span.item-title {
       font-size: 1.2em;
     }
+
+    span.item-price {
+      color: white;
+      background-color: goldenrod;
+      padding: 4px;
+      border-radius: 4px;
+    }
   }
+
+  div.card-footer {
+    display: flex;
+    flex-direction: row;
+
+    button.buy {
+      background-color: steelblue;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darkblue;
+        transition: ease-in-out 100ms;
+      }
+    }
+
+    button.bought {
+      background-color: indianred;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darkred;
+        transition: ease-in-out 100ms;
+      }
+    }
+  }
+
 }

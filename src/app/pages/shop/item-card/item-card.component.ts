@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {Item} from "../../../api/model/item";
+import {Item, ItemShopUI} from "../../../api/model/item";
 
 @Component({
   selector: 'app-item-card',
@@ -13,7 +13,7 @@ import {Item} from "../../../api/model/item";
 })
 export class ItemCardComponent implements OnInit {
 
-  @Input() item!: Item;
+  @Input() item!: Item & ItemShopUI;
   @Output() buyItem = new EventEmitter();
 
   constructor() { }

@@ -1,6 +1,23 @@
+div.title-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    height: 2em;
+    border-radius: 1em;
+    border: none;
+    padding: 4px 8px;
+  }
+}
+
 div.shop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   height: 100%;
   overflow-y: auto;
+  gap: 1em;
+  margin-top: 1em;
 }

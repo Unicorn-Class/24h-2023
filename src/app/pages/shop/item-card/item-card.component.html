@@ -1,9 +1,15 @@
 <div class="card">
   <div class="card-header">
     <span class="item-title">
-      {{ item.name }} ({{item.sellingPrice}})
+      {{ item.name }}
+    </span>
+    <span class="item-price">
+      {{ item.sellingPrice }}
     </span>
   </div>
   <img [src]="item.image" [alt]='item.name'>
-  <button (click)="buyItem.emit()">Acheter</button>
+  <div class="card-footer">
+    <button *ngIf="!item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
+    <button *ngIf="item.alreadyInInventory" class="bought">Déjà acheté</button>
+  </div>
 </div>
