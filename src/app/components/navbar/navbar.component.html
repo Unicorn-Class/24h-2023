@@ -27,9 +27,23 @@
     </div>
   </div>
 
-  <div class="menu-item info">
-    <div class="menu-text">
-          {{ ourTeam.name }} ({{ ourTeam.score }} - {{ ourTeam.coin }} )
+  <div class="info" *ngIf="fetchStatus === 'loading'">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div class="info" *ngIf="fetchStatus === 'success'">
+    <div class="menu-counter menu-coins">
+      <span>
+        {{ ourTeam.coin }} <fa-icon [icon]="faCoins"></fa-icon>
+      </span>
+    </div>
+    <div class="menu-counter menu-score">
+      <span>
+        {{ ourTeam.score }} <fa-icon [icon]="faTicket"></fa-icon>
+      </span>
+    </div>
+    <div class="menu-teamname">
+      {{ ourTeam.name }}
     </div>
   </div>
 
