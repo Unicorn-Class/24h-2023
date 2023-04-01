@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hunicornofcode": {
+      "hosting": {
+        "24h-2023": [
+          "hunicornofcode"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hunicornofcode"
+  }
+}

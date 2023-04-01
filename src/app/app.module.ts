@@ -9,6 +9,9 @@ import {Configuration} from "./api/configuration";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -37,7 +40,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
     HttpClientModule,
     KeycloakAngularModule,
     ApiModule.forRoot(AppModule.getConfiguration),
-    DashboardComponent
+    DashboardComponent,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [
     {
