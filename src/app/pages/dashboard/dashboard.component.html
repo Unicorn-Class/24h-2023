@@ -11,7 +11,9 @@
           [isEquipped]="item.isEquipped!"
           [displayButtonBuy]="false"
           [displayButtonEquip] ="true"
+          [displayButtonSell] ="true"
           (equipItem)="equipItem(item.item!)"
+          (sellItem)="sellItem(item.item!)"
         >
         </app-item-card>
       </div>

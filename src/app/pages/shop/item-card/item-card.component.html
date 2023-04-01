@@ -7,11 +7,18 @@
       {{ item.sellingPrice }} <fa-icon [icon]="faMoneyBill"></fa-icon>
     </span>
   </div>
-  <img [src]="item.image" [alt]='item.name'>
+    <img *ngIf="displayImage" [src]="item.image"[alt]='item.name' (click) = changeDisplay() >
+  <div  *ngIf="!displayImage"  (click) = changeDisplay() >
+    <div *ngFor="let stat of item.statistiques">
+        <span class="caract">{{stat.type}} : {{stat.value}}</span>
+    </div>
+  </div>
+
   <div class="card-footer">
     <button *ngIf="displayButtonBuy && !item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
     <button *ngIf="displayButtonBuy && item.alreadyInInventory" class="bought">Déjà acheté</button>
+    <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()">Equiper</button>
+    <button *ngIf="displayButtonSell && !isEquipped" (click)="sellItem.emit()">Vendre</button>
     <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
   </div>
-  <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()">Equiper</button>
 </div>
