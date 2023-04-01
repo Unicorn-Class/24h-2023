@@ -24,9 +24,14 @@ export class ItemCardComponent implements OnInit {
   @Input() displayButtonEquip = false;
   @Input() displayButtonSell = false;
   @Input() isEquipped !: boolean;
+  displayImage = true;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeDisplay() {
+    this.displayImage = !this.displayImage;
   }
 
 }
