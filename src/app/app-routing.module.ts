@@ -5,27 +5,33 @@ import {ShopComponent} from "./pages/shop/shop.component";
 import { HistoryComponent } from './components/history/history.component';
 import { RacesComponent } from './pages/races/races.component';
 import {StatisticsComponent} from "./pages/statistics/statistics.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'shop',
-    component: ShopComponent
+    component: ShopComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'history',
-    component: HistoryComponent
+    component: HistoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'race',
-    component: RacesComponent
+    component: RacesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'statistics',
-    component: StatisticsComponent
+    component: StatisticsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

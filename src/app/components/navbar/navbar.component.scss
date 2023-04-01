@@ -15,6 +15,37 @@ nav {
 
 .info{
   font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .menu-counter {
+    padding: 0 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.menu-coins {
+      background-color: #FFC107;
+    }
+
+    &.menu-score {
+      background-color: dodgerblue;
+    }
+
+    fa-icon {
+      margin-left: 4px;
+    }
+  }
+
+  .menu-teamname {
+    padding: 0 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 nav .menu-item {

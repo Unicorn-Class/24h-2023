@@ -6,7 +6,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ApiModule} from "./api/api.module";
 import {HttpClientModule} from "@angular/common/http";
-import {Configuration} from "./api/configuration";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -15,6 +14,7 @@ import { HistoryComponent } from './components/history/history.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { StatBarComponent } from './components/stat-bar/stat-bar.component';
+import {AuthService} from "./services/auth.service";
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -27,7 +27,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
       initOptions: {
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
+          window.location.origin + '/assets/silent-check-sso.html',
       }
     });
 }
@@ -42,7 +42,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AppRoutingModule,
     HttpClientModule,
     KeycloakAngularModule,
-    ApiModule.forRoot(AppModule.getConfiguration),
+    ApiModule,
     DashboardComponent,
     FontAwesomeModule,
     ShopComponent,
@@ -57,20 +57,11 @@ function initializeKeycloak(keycloak: KeycloakService) {
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
-  static getConfiguration(): Configuration {
-    return new Configuration(
-      {
-        username: 'unicorn-of-code',
-        password: '7u4P3#Fo^7KN*fGp',
-        withCredentials: true
-      }
-    );
-  }
 
 }
