@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import { HistoryComponent } from './components/history/history.component';
-import { RunButtonComponent } from './pages/run-button/run-button.component';
+import { RacesComponent } from './pages/races/races.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'race',
-    component: RunButtonComponent
+    component: RacesComponent
   },
   {
     path: '**',

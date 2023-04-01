@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Courses</h1>
+  <div class="top-bar" *ngIf="fetchStatus === 'success'">
+    <button (click)="runAll()">Lancer toutes les courses</button>
+    <div class="unit-run">
+      <select [(ngModel)]="raceNumber">
+        <option *ngFor="let race of raceList" [value]="race.id">{{ race.name }}</option>
+      </select>
+      <button (click)="onStart()">Lancer la course</button>
+    </div>
+  </div>
+
+  <div *ngIf="runResultList && runResultList.length > 0">
+    <h2>Résultats</h2>
+
+    <div class="result" *ngFor="let result of runResultList">
+      <span>{{ result.race.name }}</span>
+      <div class="result-info">
+        <span class="time">{{ result.time }}</span>
+        <span class="medal">{{ result.medal }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<label>
+  Veuillez sélectionner un numéro de course :
+</label>
+<br>
+<input type="number" name="raceNumber" [(ngModel)]="raceNumber">
+
+<br>
+
+<button (click)="onStart()">Cliquez ici pour lancer la course</button>
+
+<br>
+
+<h2 *ngIf="fetchStatus === 'success'">Course terminée.</h2>
+
+<p *ngIf="raceResult.medal !== null">Vous avez réussi la course ! Médaille obtenue :</p>
+<p>{{ this.raceResult.medal }}</p>
+
+<p *ngIf="raceResult.medal === null">Vous n'avez pas réussi la course.</p>-->
+
+
+
