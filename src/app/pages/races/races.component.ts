@@ -5,6 +5,7 @@ import { RacesService } from 'src/app/api/api/races.service';
 import { RunResult } from 'src/app/api/model/runResult';
 import {Race} from "../../api/model/race";
 import {catchError, forkJoin, of} from "rxjs";
+import {SpinnerComponent} from "../../components/spinner/spinner.component";
 
 @Component({
   selector: 'races',
@@ -14,7 +15,8 @@ import {catchError, forkJoin, of} from "rxjs";
   imports: [
     CommonModule,
     FormsModule,
-    NgIf
+    NgIf,
+    SpinnerComponent
   ]
 })
 export class RacesComponent implements OnInit {

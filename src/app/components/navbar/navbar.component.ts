@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +7,8 @@ import {RouterLinkWithHref} from "@angular/router";
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
   imports: [
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    RouterLinkActive
   ]
 })
 export class NavbarComponent implements OnInit {

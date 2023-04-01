@@ -16,6 +16,7 @@ import { ItemCardComponent } from './pages/shop/item-card/item-card.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { RaceCardComponent } from './pages/races/race-card/race-card.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>

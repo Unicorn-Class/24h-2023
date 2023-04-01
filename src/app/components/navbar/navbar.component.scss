@@ -26,6 +26,10 @@ nav .menu-text, nav .menu-text a {
   transition: color 0.1s ease-out;
   text-align: center;
   color: white;
+
+  &.active {
+    border-bottom: white solid 2px;
+  }
 }
 
 nav .menu-text a:hover {

@@ -33,7 +33,7 @@ export class ShopComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const items$ = this.itemService.getAllItems()
+    const items$ = this.itemService.search({availableOnly: true});
     const inventory$ = this.teamInventoryService.getTeamInventory(11);
     forkJoin({items: items$, inventory: inventory$}).subscribe(result => {
       this.itemList = result.items.map(item => {

@@ -1,23 +1,40 @@
 <div class="container">
   <h1>Courses</h1>
-  <div class="top-bar" *ngIf="fetchStatus === 'success'">
-    <button (click)="runAll()">Lancer toutes les courses</button>
-    <div class="unit-run">
-      <select [(ngModel)]="raceNumber">
-        <option *ngFor="let race of raceList" [value]="race.id">{{ race.name }}</option>
-      </select>
-      <button (click)="onStart()">Lancer la course</button>
-    </div>
+
+  <div class="page-content" *ngIf="fetchStatus === 'loading'">
+    <app-spinner></app-spinner>
   </div>
 
-  <div *ngIf="runResultList && runResultList.length > 0">
-    <h2>Résultats</h2>
+  <div class="page-content" *ngIf="fetchStatus === 'success'">
+    <div class="top-bar">
+      <button (click)="runAll()">Lancer toutes les courses</button>
+      <div class="unit-run">
+        <select [(ngModel)]="raceNumber">
+          <option *ngFor="let race of raceList" [value]="race.id">{{ race.name }}</option>
+        </select>
+        <button (click)="onStart()">Lancer la course</button>
+      </div>
+    </div>
 
-    <div class="result" *ngFor="let result of runResultList">
-      <span>{{ result.race.name }}</span>
-      <div class="result-info">
-        <span class="time">{{ result.time }}</span>
-        <span class="medal">{{ result.medal }}</span>
+    <div class="statistics">
+      <h2>Statistiques</h2>
+
+    </div>
+
+    <div *ngIf="runResultList && runResultList.length > 0">
+      <h2>Résultats</h2>
+
+      <div class="result-list">
+        <div class="result" *ngFor="let result of runResultList">
+          <span>{{ result.race.name }}</span>
+          <div class="result-info" *ngIf="result.time">
+            <span class="time">{{ result.time }}</span>
+            <span class="medal">{{ result.medal }}</span>
+          </div>
+          <div class="result-info" *ngIf="!result.time">
+            Non terminé
+          </div>
+        </div>
       </div>
     </div>
   </div>
