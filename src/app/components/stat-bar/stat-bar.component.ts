@@ -1,11 +1,18 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {TeamInventoryService} from "../../api/api/teamInventory.service";
-
+import { faGasPump, faExclamationCircle,
+   faWeightHanging, faAngleDoubleRight, faThermometerThreeQuarters,
+   faHandPaper,faWheelchair
+   } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-stat-bar',
   templateUrl: './stat-bar.component.html',
   styleUrls: ['./stat-bar.component.scss'],
-  standalone: true
+  standalone: true,
+  imports: [
+    FontAwesomeModule
+  ]
 })
 export class StatBarComponent implements OnInit {
 
@@ -19,6 +26,13 @@ export class StatBarComponent implements OnInit {
   energy = 0;
   wear = 0;
 
+  faGasPump = faGasPump;
+  faExclamationCircle = faExclamationCircle;
+  faWeightHanging = faWeightHanging;
+  faAngleDoubleRight = faAngleDoubleRight;
+  faThermometerThreeQuarters = faThermometerThreeQuarters;
+  faHandPaper = faHandPaper;
+  faWheelchair = faWheelchair;
   constructor() { }
 
   ngOnInit(): void {
