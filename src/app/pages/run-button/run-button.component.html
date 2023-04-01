@@ -1,0 +1,22 @@
+<label>
+  Veuillez sélectionner un numéro de course :
+</label>
+<br>
+<input type="number" name="raceNumber" [(ngModel)]="raceNumber">
+
+<br>
+
+<button (click)="onStart()">Cliquez ici pour lancer la course</button>
+
+<br>
+
+<h2 *ngIf="fetchStatus === 'success'">Course terminée.</h2>
+
+<p *ngIf="raceResult.medal !== null">Vous avez réussi la course ! Médaille obtenue :</p>
+<p>{{ this.raceResult.medal }}</p>
+
+<p *ngIf="raceResult.medal === null">Vous n'avez pas réussi la course.</p>
+
+
+
+
