@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {RouterLinkActive, RouterLinkWithHref} from "@angular/router";
-import {Team} from "../../api/model/team";
-import {TeamsService} from "../../api/api/teams.service";
+import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+import { Team } from '../../api/model/team';
+import { TeamsService } from '../../api/api/teams.service';
 import {AuthService} from "../../services/auth.service";
 import {CommonModule} from "@angular/common";
 import {SpinnerComponent} from "../spinner/spinner.component";
@@ -29,12 +29,12 @@ export class NavbarComponent implements OnInit {
   faTicket = faTicketAlt;
 
   ngOnInit(): void {
-    this.authService.getTeamId().then(teamId => {
-      this.teamsService.getById(teamId).subscribe(result => {
-        this.ourTeam = result;
-        this.fetchStatus = 'success';
-      });
-    });
+    this.teamsService.getById(11).subscribe(result => {
+      this.ourTeam = result;
+    })
   }
 
+  doKonamiAction(){
+    console.log('GG WP')
+  }
 }

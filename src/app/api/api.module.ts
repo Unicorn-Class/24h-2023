@@ -9,7 +9,6 @@ import { RacesService } from './api/races.service';
 import { TeamInventoryService } from './api/teamInventory.service';
 import { TeamsService } from './api/teams.service';
 import { TransactionsService } from './api/transactions.service';
-
 @NgModule({
   imports:      [],
   declarations: [],
@@ -20,7 +19,7 @@ import { TransactionsService } from './api/transactions.service';
     RacesService,
     TeamInventoryService,
     TeamsService,
-    TransactionsService
+    TransactionsService,
   ]
 })
 export class ApiModule {
