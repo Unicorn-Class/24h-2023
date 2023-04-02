@@ -4,7 +4,6 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import { HistoryComponent } from './components/history/history.component';
 import { RacesComponent } from './pages/races/races.component';
-import {StatisticsComponent} from "./pages/statistics/statistics.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {SimulatorComponent} from "./pages/simulator/simulator.component";
 
@@ -32,11 +31,6 @@ const routes: Routes = [
   {
     path: 'simulator',
     component: SimulatorComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'statistics',
-    component: StatisticsComponent,
     canActivate: [AuthGuard]
   },
   {
