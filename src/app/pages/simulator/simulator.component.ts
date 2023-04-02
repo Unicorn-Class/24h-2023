@@ -108,7 +108,7 @@ export class SimulatorComponent implements OnInit {
     const impacts: { [key: string]: any } = {
       "Straight": ["handlingAbility", "power"],
       "Turn": ["handlingAbility", "grip"],
-      "Sharp turn": ["handlingAbility", "grip"],
+      "Sharp turn": ["handlingAbility", "grip", "acceleration"],
       "Uphill": ["power", "grip"],
       "Downhill": ["acceleration", "power"]
     }
