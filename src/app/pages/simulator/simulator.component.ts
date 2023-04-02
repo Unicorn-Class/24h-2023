@@ -107,7 +107,7 @@ export class SimulatorComponent implements OnInit {
     // constant : impacted stats, depending on road topology
     const impacts: { [key: string]: any } = {
       "Straight": ["handlingAbility", "power"],
-      "Turn": ["handlingAbility", "grip"],
+      "Turn": ["handlingAbility", "grip", "acceleration"],
       "Sharp turn": ["handlingAbility", "grip", "acceleration"],
       "Uphill": ["power", "acceleration"],
       "Downhill": ["power"]
