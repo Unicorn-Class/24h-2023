@@ -9,7 +9,7 @@
     <div class="top-bar">
       <app-flat-button (click)="runAll()">Lancer toutes les courses</app-flat-button>
       <div class="unit-run">
-        <select [(ngModel)]="raceNumber">
+        <select class="combobox" [(ngModel)]="raceNumber">
           <option *ngFor="let race of raceList" [value]="race.id">
             {{ race.name }}
           </option>
