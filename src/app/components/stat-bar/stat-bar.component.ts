@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {TeamInventoryService} from "../../api/api/teamInventory.service";
 import { faGasPump, faExclamationCircle,
    faWeightHanging, faAngleDoubleRight, faThermometerThreeQuarters,
-   faHandPaper,faCarCrash
+   faHandPaper,faCarCrash, faCarSide
    } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {CommonModule} from "@angular/common";
@@ -34,6 +34,7 @@ export class StatBarComponent implements OnInit {
   faExclamationCircle = faExclamationCircle;
   faWeightHanging = faWeightHanging;
   faAngleDoubleRight = faAngleDoubleRight;
+  faCarSide = faCarSide;
   faThermometerThreeQuarters = faThermometerThreeQuarters;
   faHandPaper = faHandPaper;
   faCarCrash = faCarCrash;

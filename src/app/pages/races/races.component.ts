@@ -50,6 +50,7 @@ export class RacesComponent implements OnInit {
 
   onStart(): void {
     this.started = true
+    this.historyFind = false
     this.allRun =[]
     this.fetchStatus = 'fetchResult';
     this.racesService.run(this.raceNumber, 11).subscribe(result => {
@@ -64,6 +65,7 @@ export class RacesComponent implements OnInit {
   runAll() {
     this.fetchStatus = 'fetchResult';
     const runList = [];
+    this.historyFind = false;
     for (const race of this.raceList) runList.push(this.racesService.run(race.id,11).pipe(catchError(() => of({
       medal: undefined,
       race: race
