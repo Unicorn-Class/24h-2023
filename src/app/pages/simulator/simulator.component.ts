@@ -109,8 +109,8 @@ export class SimulatorComponent implements OnInit {
       "Straight": ["handlingAbility", "power"],
       "Turn": ["handlingAbility", "grip"],
       "Sharp turn": ["handlingAbility", "grip", "acceleration"],
-      "Uphill": ["power", "grip"],
-      "Downhill": ["acceleration", "power"]
+      "Uphill": ["power", "acceleration"],
+      "Downhill": ["power"]
     }
 
     // constant : base times by road topology
