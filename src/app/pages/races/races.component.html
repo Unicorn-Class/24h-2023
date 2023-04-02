@@ -14,13 +14,13 @@
             {{ race.name }}
           </option>
         </select>
-        <label><input type="checkbox" [(ngModel)]="showHistory" />Historique</label>
+        <label class="label"><input  type="checkbox" [(ngModel)]="showHistory" />Historique</label>
 
         <app-flat-button (click)="onStart()">Lancer la course</app-flat-button>
       </div>
     </div>
 
-    <h2>Résultats</h2>
+    <h2 *ngIf=" started">Résultats</h2>
 
     <div class="page-content" *ngIf="fetchStatus === 'fetchResult'">
       <app-spinner></app-spinner>
@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <div *ngIf="
+    <div *ngIf=" started &&
         (!runResultList || runResultList.length === 0) &&
         fetchStatus === 'success'
       " class="no-result">

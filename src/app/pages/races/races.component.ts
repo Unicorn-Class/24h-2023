@@ -36,6 +36,7 @@ export class RacesComponent implements OnInit {
   allRun !: Array<RunResult>
   showHistory = false;
   historyFind = false;
+  started = false
   private racesService: RacesService = inject(RacesService);
 
   constructor() { }
@@ -48,6 +49,7 @@ export class RacesComponent implements OnInit {
   }
 
   onStart(): void {
+    this.started = true
     this.allRun =[]
     this.fetchStatus = 'fetchResult';
     this.racesService.run(this.raceNumber, 11).subscribe(result => {
