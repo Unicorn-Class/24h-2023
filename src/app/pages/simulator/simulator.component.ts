@@ -26,7 +26,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 })
 export class SimulatorComponent implements OnInit {
   fetchStatus: 'loading' | 'success' | 'error' | 'fetchResult' = 'loading';
-  raceResult!: RunResult;
+  raceResult!: number;
   raceNumber: number = 1;
   raceList: Race[] = [];
   runResultList: RunResult[] = [];
@@ -34,13 +34,13 @@ export class SimulatorComponent implements OnInit {
   fail = faCross;
   clock = faClock;
   private racesService: RacesService = inject(RacesService);
-  power!: number;
-  acceleration!: number;
-  grip!: number;
-  maniability!: number;
-  weight!: number;
-  energy!: number;
-  wear!: number;
+  power: number = 45;
+  acceleration: number = 50;
+  grip: number = 50;
+  maniability: number = 50;
+  weight: number = 50;
+  energy: number = 10;
+  wear: number = 10;
   power_ponderation!: number;
   acceleration_ponderation!: number;
   grip_ponderation!: number;
@@ -58,8 +58,88 @@ export class SimulatorComponent implements OnInit {
     });
   }
 
+
+
   onStart(): void {
-    //Todo: simulate run with selected vehicle
+
+    //const thisRace = this.raceList.find(r => r.id === this.raceNumber);
+    const thisRace = this.raceList[this.raceNumber - 1];
+
+    if(thisRace === undefined){
+      return;
+    }
+
+    const sections = thisRace.sections;
+    const nbTours = thisRace.laps;
+
+    if(sections === undefined || nbTours === undefined){
+      return;
+    }
+
+    interface S {
+      "acceleration": number,
+      "energyConsumption": number,
+      "grip": number,
+      "handlingAbility": number,
+      "power": number,
+      "wear": number,
+      "weight": number,
+      [key: string]: number
+
+    }
+
+  const stats: S = {
+    "acceleration": this.acceleration,
+    "energyConsumption": this.energy,
+    "grip": this.grip,
+    "handlingAbility": this.maniability,
+    "power": this.power,
+    "wear": this.wear,
+    "weight": this.weight
+  };
+
+
+    // constant
+    const impacts: { [key: string]: any } = {
+      "Straight": ["handlingAbility", "power"],
+      "Turn": ["handlingAbility", "grip"],
+      "Sharp turn": ["handlingAbility", "grip"],
+      "Uphill": ["power", "grip"],
+      "Downhill": ["acceleration"]
+    }
+
+    // constant
+    const globalCoefs: { [key: string]: any } = {
+      "Straight": 15,
+      "Turn": 30,
+      "Sharp turn": 50,
+      "Uphill": 35,
+      "Downhill": 10
+    }
+
+    // constant
+    const terrainCoefs: { [key: string]: any } = {
+      "Concrete": 1,
+      "Dirt": 1.2,
+      "Ice": 0,
+    }
+
+
+    let totalTimeBeforeStops = 0;
+    for(const section of sections){
+      let totalCoef = 1;
+      for(const impact of impacts[section.type]){
+        const stat = stats[impact];
+        const coef = 1-(stat/60);
+        totalCoef *= coef;
+      }
+      const time = totalCoef * globalCoefs[section.type];
+      const terrainCoef = (stats.weight/100) * terrainCoefs[section.terrain] + 1;
+      totalTimeBeforeStops += time*terrainCoef;
+    }
+    const energyStopTime = stats.energyConsumption/4 * nbTours;
+    const wearStopTime = stats.wear/2 * nbTours;
+    this.raceResult = Math.round((totalTimeBeforeStops * 1000) - energyStopTime - wearStopTime);
   }
 
   runAll() {
