@@ -7,10 +7,9 @@
       {{ item.sellingPrice }} <fa-icon [icon]="faMoneyBill"></fa-icon>
     </span>
     <button *ngIf="displayButtonSell"(click)="sellItem.emit()" class="sell">Vendre</button>
-
   </div>
-    <img *ngIf="displayImage" [src]="item.image"[alt]='item.name' (click) = changeDisplay() >
-  <div  *ngIf="!displayImage"  (click) = changeDisplay() >
+  <img *ngIf="displayImage" [src]="item.image"[alt]='item.name' (click) = changeDisplay() >
+  <div *ngIf="!displayImage"  (click) = changeDisplay() >
     <div *ngFor="let stat of item.statistiques">
         <span class="caract">{{stat.type}} : {{stat.value}}</span>
     </div>
@@ -20,8 +19,8 @@
     <button *ngIf="displayButtonBuy && !item.alreadyInInventory" class="buy" (click)="buyItem.emit()">Acheter</button>
     <button *ngIf="displayButtonBuy && item.alreadyInInventory" class="bought">Déjà acheté</button>
     <button *ngIf="displayButtonEquip && !isEquipped" (click)="equipItem.emit()" class="bought">Equiper</button>
-    <fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon>
-    <fa-icon [icon]="faInfoCircle"></fa-icon>{{ item.type }}
-    <fa-icon [icon]="iconeRarity"></fa-icon>{{ item.rarity }}
+    <span><fa-icon *ngIf="isEquipped" [icon]="faCheck"></fa-icon></span>
+    <span><fa-icon [icon]="faInfoCircle"></fa-icon>{{ item.type }}</span>
+    <span><fa-icon [icon]="iconeRarity"></fa-icon>{{ item.rarity }}</span>
   </div>
 </div>

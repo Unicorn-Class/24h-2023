@@ -32,7 +32,7 @@
           <span>{{ result.race.name }}</span>
           <div class="result-info" *ngIf="result.time">
             <span class="time"><fa-icon [icon]="clock"></fa-icon> {{ result.time }}</span>
-            <span class="medal" *ngIf="result.medal"><fa-icon [icon]="faMedal"></fa-icon> {{ result.medal }}</span>
+            <span class="medal" *ngIf="result.medal" [ngClass]="result.medal.toLowerCase()"><fa-icon [icon]="faMedal"></fa-icon> {{ result.medal }}</span>
             <span class="medal" *ngIf="!result.medal"><fa-icon [icon]="fail"></fa-icon> Aucune</span>
           </div>
           <div class="result-info" *ngIf="!result.time">Non terminé</div>

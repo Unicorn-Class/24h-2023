@@ -81,11 +81,13 @@ export class SimulatorComponent implements OnInit {
     }
 
     //const thisRace = this.raceList.find(r => r.id === this.raceNumber);
-    this.selectedRace = this.raceList[this.raceNumber - 1];
+    const race = this.raceList.find(race => race.id === this.raceNumber);
 
-    if(this.selectedRace === undefined){
+    if(race === undefined){
       return;
     }
+
+    this.selectedRace = race;
 
     const sections = this.selectedRace.sections;
     const nbTours = this.selectedRace.laps;
@@ -140,7 +142,7 @@ export class SimulatorComponent implements OnInit {
       // We create each coefficient by using the custom stat level of some selected impacted characteristics
       for(const impact of impacts[section.type]){
         const stat = stats[impact];
-        const coef = 1 - (stat / 60);
+        const coef = 1 - (stat / 61);
         totalCoef *= coef;
       }
 
@@ -156,16 +158,9 @@ export class SimulatorComponent implements OnInit {
     // We remove the time of stops, due to energy and wear
     const energyStopTime = stats.energyConsumption/4 * nbTours;
     const wearStopTime = stats.wear/2 * nbTours;
-    this.raceResult = Math.round((totalTimeBeforeStops * 1000) - energyStopTime - wearStopTime);
+    this.raceResult = Math.round((totalTimeBeforeStops * 1000) + energyStopTime + wearStopTime);
     this.minimalMedal = this.selectedRace?.medals?.[0].timeToObtain;
     this.middleMedal = this.selectedRace?.medals?.[1].timeToObtain;
     this.highMedal = this.selectedRace?.medals?.[2].timeToObtain;
-  }
-
-  runAll() {
-    //caca
-    for (const race of this.raceList) {
-      //Todo: simulate run with selected vehicle
-    }
   }
 }

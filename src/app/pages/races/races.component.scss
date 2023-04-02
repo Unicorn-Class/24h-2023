@@ -35,8 +35,24 @@ div.result {
   margin-top: 8px;
 
   div.result-info {
-    span.time {
-      margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span {
+      display: block;
+      width: 80px;
+
+      &.medal {
+        &.brass {
+          color: saddlebrown;
+        }
+        &.silver {
+          color: silver;
+        }
+        &.gold {
+          color: gold;
+        }
+      }
     }
   }
 }
@@ -49,20 +65,15 @@ div.no-result {
   justify-content: center;
 }
 
-.medal{
-  padding-right: 3px;
-}
-
-
 .full-car-image{
-
   display: flex;
-  margin-top: 20px;
+  margin-top: 2em;
   justify-content: space-around;
 
-  img{
-  max-width: 500px;
-  border: 3px solid black;
-  border-radius: 26px;
-}
+  img {
+    max-height: 200px;
+    max-width: 500px;
+    border: 3px solid black;
+    border-radius: 26px;
+  }
 }

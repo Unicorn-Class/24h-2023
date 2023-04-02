@@ -9,6 +9,10 @@ div.card {
   justify-content: space-between;
   padding: 8px;
 
+  img {
+    cursor: pointer;
+  }
+
   div.card-header {
     display: flex;
     flex-direction: row;
@@ -30,7 +34,8 @@ div.card {
   div.card-footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 
     button.buy {
       background-color: steelblue;
@@ -63,8 +68,11 @@ div.card {
     }
   }
 
-  .caract {
+  div {
+    cursor: pointer;
+    .caract {
       font-size: 20px;
+    }
   }
 
   fa-icon {
