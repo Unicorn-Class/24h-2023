@@ -162,6 +162,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   runAll() {
+    //caca
     for (const race of this.raceList) {
       //Todo: simulate run with selected vehicle
     }
