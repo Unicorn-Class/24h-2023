@@ -68,37 +68,28 @@
 
     <div *ngIf="!raceResult" class="no-result">
       Aucun résultat
-    <div *ngIf="raceResult && selectedRace">
-      <span  class="time"><fa-icon [icon]="clock"></fa-icon> Temps : {{ raceResult }}</span>
-      <div *ngFor="let medal of selectedRace.medals">
-        <span class="medal" ><fa-icon [icon]="faMedal"></fa-icon> {{ medal.type}} : {{ medal.timeToObtain}}</span>
       </div>
-
-    </div>
-    <div *ngIf="raceResult" class="no-result">
-      Votre temps est de {{raceResult}}.
-    </div>
-    <div *ngIf="minimalMedal && minimalMedal < raceResult" class="no-result">
-      Vous n'obtenez aucune médaille, car il fallait faire moins de {{minimalMedal}}. Looser !
-    </div>
-    <div *ngIf="minimalMedal && middleMedal && minimalMedal >= raceResult && middleMedal < raceResult" class="no-result">
-      Vous obtenez la médaille de bronze ({{minimalMedal}}) mais pas la médaille d'argent ({{middleMedal}}).
-    </div>
-    <div *ngIf="highMedal && middleMedal && middleMedal >= raceResult && highMedal < raceResult" class="no-result">
-      Vous obtenez la médaille d'argent ({{middleMedal}}) mais pas la médaille d'or ({{highMedal}}).
-    </div>
-    <div *ngIf="highMedal && highMedal > raceResult" class="no-result">
-      Vous obtenez la médaille d'or ({{highMedal}}). Félicitations.
-    </div>
-    <div *ngIf="raceResult && selectedRace">
-      <span  class="time"><fa-icon [icon]="clock"></fa-icon> Temps : {{ raceResult }}</span>
-      <div *ngFor="let medal of selectedRace.medals">
-        <span class="medal" ><fa-icon [icon]="faMedal"></fa-icon> {{ medal.type}} : {{ medal.timeToObtain}}</span>
+      <div *ngIf="raceResult && selectedRace">
+        <span  class="time"><fa-icon [icon]="clock"></fa-icon> Temps : {{ raceResult }}</span>
+        <div *ngFor="let medal of selectedRace.medals">
+          <span class="medal" ><fa-icon [icon]="faMedal"></fa-icon> {{ medal.type}} : {{ medal.timeToObtain}}</span>
+        </div>
       </div>
-
-    </div>
-
-
+      <div *ngIf="raceResult" class="no-result">
+        Votre temps est de {{raceResult}}.
+      </div>
+      <div *ngIf="minimalMedal && minimalMedal < raceResult" class="no-result">
+        Vous n'obtenez aucune médaille, car il fallait faire moins de {{minimalMedal}}. Looser !
+      </div>
+      <div *ngIf="minimalMedal && middleMedal && minimalMedal >= raceResult && middleMedal < raceResult" class="no-result">
+        Vous obtenez la médaille de bronze ({{minimalMedal}}) mais pas la médaille d'argent ({{middleMedal}}).
+      </div>
+      <div *ngIf="highMedal && middleMedal && middleMedal >= raceResult && highMedal < raceResult" class="no-result">
+        Vous obtenez la médaille d'argent ({{middleMedal}}) mais pas la médaille d'or ({{highMedal}}).
+      </div>
+      <div *ngIf="highMedal && highMedal > raceResult" class="no-result">
+        Vous obtenez la médaille d'or ({{highMedal}}). Félicitations.
+      </div>
   </div>
 </div>
 
