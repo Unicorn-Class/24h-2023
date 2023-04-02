@@ -24,6 +24,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     FontAwesomeModule
   ]
 })
+
 export class SimulatorComponent implements OnInit {
   fetchStatus: 'loading' | 'success' | 'error' | 'fetchResult' = 'loading';
   raceResult!: number;
@@ -62,6 +63,18 @@ export class SimulatorComponent implements OnInit {
 
   onStart(): void {
 
+    interface S {
+      "acceleration": number,
+      "energyConsumption": number,
+      "grip": number,
+      "handlingAbility": number,
+      "power": number,
+      "wear": number,
+      "weight": number,
+      [key: string]: number
+
+    }
+
     //const thisRace = this.raceList.find(r => r.id === this.raceNumber);
     const thisRace = this.raceList[this.raceNumber - 1];
 
@@ -76,30 +89,17 @@ export class SimulatorComponent implements OnInit {
       return;
     }
 
-    interface S {
-      "acceleration": number,
-      "energyConsumption": number,
-      "grip": number,
-      "handlingAbility": number,
-      "power": number,
-      "wear": number,
-      "weight": number,
-      [key: string]: number
+    const stats: S = {
+      "acceleration": this.acceleration,
+      "energyConsumption": this.energy,
+      "grip": this.grip,
+      "handlingAbility": this.maniability,
+      "power": this.power,
+      "wear": this.wear,
+      "weight": this.weight
+    };
 
-    }
-
-  const stats: S = {
-    "acceleration": this.acceleration,
-    "energyConsumption": this.energy,
-    "grip": this.grip,
-    "handlingAbility": this.maniability,
-    "power": this.power,
-    "wear": this.wear,
-    "weight": this.weight
-  };
-
-
-    // constant
+    // constant : impacted stats, depending on road topology
     const impacts: { [key: string]: any } = {
       "Straight": ["handlingAbility", "power"],
       "Turn": ["handlingAbility", "grip"],
@@ -108,7 +108,7 @@ export class SimulatorComponent implements OnInit {
       "Downhill": ["acceleration"]
     }
 
-    // constant
+    // constant : base times by road topology
     const globalCoefs: { [key: string]: any } = {
       "Straight": 15,
       "Turn": 30,
@@ -117,26 +117,38 @@ export class SimulatorComponent implements OnInit {
       "Downhill": 10
     }
 
-    // constant
+    // constant : weight coefficients depending on terrains
     const terrainCoefs: { [key: string]: any } = {
       "Concrete": 1,
       "Dirt": 1.2,
       "Ice": 0,
     }
 
-
     let totalTimeBeforeStops = 0;
+
+    // Parse each section
     for(const section of sections){
+
+      // The product of coefficients we'll use to multiply a section
       let totalCoef = 1;
+
+      // We create each coefficient by using the custom stat level of some selected impacted characteristics
       for(const impact of impacts[section.type]){
         const stat = stats[impact];
-        const coef = 1-(stat/60);
+        const coef = 1 - (stat / 60);
         totalCoef *= coef;
       }
+
+      // Multiply coefficient with custom stats
       const time = totalCoef * globalCoefs[section.type];
+
+      // Add the weight coefficient, depending on the terrain
       const terrainCoef = (stats.weight/100) * terrainCoefs[section.terrain] + 1;
+
       totalTimeBeforeStops += time*terrainCoef;
     }
+
+    // We remove the time of stops, due to energy and wear
     const energyStopTime = stats.energyConsumption/4 * nbTours;
     const wearStopTime = stats.wear/2 * nbTours;
     this.raceResult = Math.round((totalTimeBeforeStops * 1000) - energyStopTime - wearStopTime);
