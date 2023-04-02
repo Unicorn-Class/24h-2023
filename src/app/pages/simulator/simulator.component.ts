@@ -28,6 +28,9 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 export class SimulatorComponent implements OnInit {
   fetchStatus: 'loading' | 'success' | 'error' | 'fetchResult' = 'loading';
   raceResult!: number;
+  minimalMedal!: number | undefined;
+  middleMedal!: number | undefined;
+  highMedal!: number | undefined;
   raceNumber: number = 1;
   raceList: Race[] = [];
   runResultList: RunResult[] = [];
@@ -105,7 +108,7 @@ export class SimulatorComponent implements OnInit {
       "Turn": ["handlingAbility", "grip"],
       "Sharp turn": ["handlingAbility", "grip"],
       "Uphill": ["power", "grip"],
-      "Downhill": ["acceleration"]
+      "Downhill": ["acceleration", "power"]
     }
 
     // constant : base times by road topology
@@ -152,6 +155,9 @@ export class SimulatorComponent implements OnInit {
     const energyStopTime = stats.energyConsumption/4 * nbTours;
     const wearStopTime = stats.wear/2 * nbTours;
     this.raceResult = Math.round((totalTimeBeforeStops * 1000) - energyStopTime - wearStopTime);
+    this.minimalMedal = thisRace?.medals?.[0].timeToObtain;
+    this.middleMedal = thisRace?.medals?.[1].timeToObtain;
+    this.highMedal = thisRace?.medals?.[2].timeToObtain;
   }
 
   runAll() {

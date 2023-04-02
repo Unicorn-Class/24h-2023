@@ -7,7 +7,7 @@
 
   <div class="page-content" *ngIf="fetchStatus === 'success' || fetchStatus === 'fetchResult'">
     <div class="top-bar">
-      <app-flat-button (click)="runAll()">Lancer toutes les courses</app-flat-button>
+      <!--<app-flat-button (click)="runAll()">Lancer toutes les courses</app-flat-button>-->
       <div class="unit-run">
         <select class="combobox" [(ngModel)]="raceNumber">
           <option *ngFor="let race of raceList" [value]="race.id">{{ race.name }}</option>
@@ -91,10 +91,24 @@
       </div>
     </div>
 
-    <div *ngIf="(!runResultList || runResultList.length === 0) && fetchStatus === 'success'" class="no-result">
+    <div *ngIf="!raceResult" class="no-result">
       Aucun résultat
     </div>
-    <p>{{raceResult}}</p>
+    <div *ngIf="raceResult" class="no-result">
+      Votre temps est de {{raceResult}}.
+    </div>
+    <div *ngIf="minimalMedal && minimalMedal < raceResult" class="no-result">
+      Vous n'obtenez aucune médaille, car il fallait faire moins de {{minimalMedal}}. Looser !
+    </div>
+    <div *ngIf="minimalMedal && middleMedal && minimalMedal >= raceResult && middleMedal < raceResult" class="no-result">
+      Vous obtenez la médaille de bronze ({{minimalMedal}}) mais pas la médaille d'argent ({{middleMedal}}).
+    </div>
+    <div *ngIf="highMedal && middleMedal && middleMedal >= raceResult && highMedal < raceResult" class="no-result">
+      Vous obtenez la médaille d'argent ({{middleMedal}}) mais pas la médaille d'or ({{highMedal}}).
+    </div>
+    <div *ngIf="highMedal && highMedal > raceResult" class="no-result">
+      Vous obtenez la médaille d'or ({{highMedal}}). Félicitations.
+    </div>
   </div>
 </div>
 
