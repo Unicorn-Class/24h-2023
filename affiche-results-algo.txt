@@ -1,0 +1,15 @@
+
+
+1 - Faire un "get All team Race by Race Id" sur toutes les Courses 
+2 - Mapper pour récupérer un set de données comportant les States du véhicule, le temps, la médaille
+
+let dataSimple = data.map(run => {
+    return {
+        "time":run.time,
+        "medal":run.medal,
+        "stats": run.stats,
+    }
+})
+
+3 - (Gros morceau que je sais pas du tout comment m'y prendre) Afficher sur l'interface un tableau comprenant le temps réalisé avec les stats correspondant
+avec comme option d'affichage le terrain et la médaille obtenue
