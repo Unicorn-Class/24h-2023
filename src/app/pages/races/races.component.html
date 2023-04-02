@@ -10,8 +10,12 @@
       <app-flat-button (click)="runAll()">Lancer toutes les courses</app-flat-button>
       <div class="unit-run">
         <select [(ngModel)]="raceNumber">
-          <option *ngFor="let race of raceList" [value]="race.id">{{ race.name }}</option>
+          <option *ngFor="let race of raceList" [value]="race.id">
+            {{ race.name }}
+          </option>
         </select>
+        <label><input type="checkbox" [(ngModel)]="showHistory" />Historique</label>
+
         <app-flat-button (click)="onStart()">Lancer la course</app-flat-button>
       </div>
     </div>
@@ -28,20 +32,32 @@
           <span>{{ result.race.name }}</span>
           <div class="result-info" *ngIf="result.time">
             <span class="time"><fa-icon [icon]="clock"></fa-icon> {{ result.time }}</span>
-            <span class="medal" *ngIf="result.medal"><fa-icon [icon]="faMedal"></fa-icon> {{result.medal}}</span>
+            <span class="medal" *ngIf="result.medal"><fa-icon [icon]="faMedal"></fa-icon> {{ result.medal }}</span>
             <span class="medal" *ngIf="!result.medal"><fa-icon [icon]="fail"></fa-icon> Aucune</span>
           </div>
-          <div class="result-info" *ngIf="!result.time">
-            Non terminé
+          <div class="result-info" *ngIf="!result.time">Non terminé</div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showHistory && historyFind">
+      <h2>Historique</h2>
+      <div class="result-list">
+
+        <div class="result" *ngFor="let run of allRun">
+          <span>{{ run.race.name }}</span>
+          <div class="result-info" *ngIf="run.time">
+            <span class="time"><fa-icon [icon]="clock"></fa-icon> {{ run.time }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div *ngIf="(!runResultList || runResultList.length === 0) && fetchStatus === 'success'" class="no-result">
+    <div *ngIf="
+        (!runResultList || runResultList.length === 0) &&
+        fetchStatus === 'success'
+      " class="no-result">
       Aucun résultat
     </div>
   </div>
 </div>
-
-
