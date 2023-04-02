@@ -33,9 +33,38 @@ export class NavbarComponent implements OnInit {
       this.ourTeam = result;
       this.fetchStatus = 'success';
     })
+
+    this.konami(this.doKonamiAction);
+
   }
 
   doKonamiAction(){
     console.log('GG WP')
+    window.open("https://www.youtube.com/watch?v=aIVsz5Pj0eE", "_blank");
+  }
+
+  konami(callback: () => void): void {
+    let codes: string[] = [
+        'ArrowUp',
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowLeft',
+        'ArrowRight',
+      ],
+      position: number = 0;
+    document.addEventListener('keydown', function (event: KeyboardEvent): void {
+      if (event.code === codes[position]) {
+        position++;
+        if (position === codes.length) {
+          position = 0;
+          callback();
+        }
+      } else {
+        position = 0;
+      }
+    });
   }
 }
