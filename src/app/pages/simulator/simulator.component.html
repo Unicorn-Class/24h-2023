@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <h2>Résultats</h2>
+    <h2 *ngIf="raceResult">Résultats</h2>
 
     <div class="page-content" *ngIf="fetchStatus === 'fetchResult'">
       <app-spinner></app-spinner>
@@ -91,10 +91,15 @@
       </div>
     </div>
 
-    <div *ngIf="(!runResultList || runResultList.length === 0) && fetchStatus === 'success'" class="no-result">
-      Aucun résultat
+    <div *ngIf="raceResult && selectedRace">
+      <span  class="time"><fa-icon [icon]="clock"></fa-icon> Temps : {{ raceResult }}</span>
+      <div *ngFor="let medal of selectedRace.medals">
+        <span class="medal" ><fa-icon [icon]="faMedal"></fa-icon> {{ medal.type}} : {{ medal.timeToObtain}}</span>
+      </div>
+
     </div>
-    <p>{{raceResult}}</p>
+
+
   </div>
 </div>
 
