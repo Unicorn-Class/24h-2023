@@ -30,6 +30,7 @@ div.card {
   div.card-footer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 
     button.buy {
       background-color: steelblue;
