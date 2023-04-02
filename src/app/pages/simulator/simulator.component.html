@@ -21,7 +21,6 @@
     <div class="configuration-container">
 
       <div class="input-group">
-        <h3>Valeurs</h3>
         <div class="input-group">
           <div class="input-bar">
             <label class= "label">Puissance</label>
@@ -41,30 +40,6 @@
           <input class= "input" placeholder="Poids" min="0" max="100" type="number" [(ngModel)]="weight"/>
           <input class= "input" placeholder="Usure" min="0" max="100" type="number" [(ngModel)]="wear"/>
           <input class= "input" placeholder="Consommation" min="0" max="60" type="number" [(ngModel)]="energy"/>
-        </div>
-      </div>
-
-      <div class="input-group">
-        <h3>Pondérations</h3>
-        <div class="input-group">
-          <div class="input-bar">
-            <label class= "label">Puissance</label>
-            <label class= "label">Accélération</label>
-            <label class= "label">Adhérence</label>
-            <label class= "label">Maniabilité</label>
-            <label class= "label">Poids</label>
-            <label class= "label">Usure</label>
-            <label class= "label">Consommation</label>
-          </div>
-        </div>
-        <div class="input-bar">
-          <input class= "input" placeholder="Pondé. Puissance" min="0" type="number" [(ngModel)]="power_ponderation"/>
-          <input class= "input" placeholder="Pondé. Accélération" min="0" type="number" [(ngModel)]="acceleration_ponderation"/>
-          <input class= "input" placeholder="Pondé. Adhérence" min="0" type="number" [(ngModel)]="grip_ponderation"/>
-          <input class= "input" placeholder="Pondé. Maniabilité" min="0" type="number" [(ngModel)]="maniability_ponderation"/>
-          <input class= "input" placeholder="Pondé. Poids" min="0" type="number" [(ngModel)]="weight_ponderation"/>
-          <input class= "input" placeholder="Pondé. Usure" min="0" type="number" [(ngModel)]="wear_ponderation"/>
-          <input class= "input" placeholder="Pondé. Consommation" min="0" type="number" [(ngModel)]="energy_ponderation"/>
         </div>
       </div>
     </div>
