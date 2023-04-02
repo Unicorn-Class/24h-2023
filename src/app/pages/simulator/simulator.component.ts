@@ -142,7 +142,7 @@ export class SimulatorComponent implements OnInit {
       // We create each coefficient by using the custom stat level of some selected impacted characteristics
       for(const impact of impacts[section.type]){
         const stat = stats[impact];
-        const coef = 1 - (stat / 61);
+        const coef = (2 - (stat / 61))/2;
         totalCoef *= coef;
       }
 
@@ -152,7 +152,7 @@ export class SimulatorComponent implements OnInit {
       // Add the weight coefficient, depending on the terrain
       const terrainCoef = (stats.weight/100) * terrainCoefs[section.terrain] + 1;
 
-      totalTimeBeforeStops += time*terrainCoef;
+      totalTimeBeforeStops += (time*terrainCoef)/10;
     }
 
     // We remove the time of stops, due to energy and wear
