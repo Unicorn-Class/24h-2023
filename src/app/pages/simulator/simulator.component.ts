@@ -53,6 +53,7 @@ export class SimulatorComponent implements OnInit {
   energy_ponderation!: number;
   wear_ponderation!: number;
   selectedRace !: Race;
+  started = false;
 
   constructor() { }
 
@@ -66,7 +67,7 @@ export class SimulatorComponent implements OnInit {
 
 
   onStart(): void {
-
+    this.started = true;
     interface S {
       "acceleration": number,
       "energyConsumption": number,
@@ -107,9 +108,9 @@ export class SimulatorComponent implements OnInit {
     const impacts: { [key: string]: any } = {
       "Straight": ["handlingAbility", "power"],
       "Turn": ["handlingAbility", "grip"],
-      "Sharp turn": ["handlingAbility", "grip"],
-      "Uphill": ["power", "grip"],
-      "Downhill": ["acceleration", "power"]
+      "Sharp turn": ["handlingAbility", "grip", "acceleration"],
+      "Uphill": ["power", "acceleration"],
+      "Downhill": ["power"]
     }
 
     // constant : base times by road topology
