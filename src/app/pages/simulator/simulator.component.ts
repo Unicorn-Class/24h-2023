@@ -80,8 +80,7 @@ export class SimulatorComponent implements OnInit {
 
     }
 
-    //const thisRace = this.raceList.find(r => r.id === this.raceNumber);
-    const race = this.raceList.find(race => race.id === this.raceNumber);
+    const race = this.raceList[this.raceNumber - 1];
 
     if(race === undefined){
       return;
@@ -152,13 +151,13 @@ export class SimulatorComponent implements OnInit {
       // Add the weight coefficient, depending on the terrain
       const terrainCoef = (stats.weight/100) * terrainCoefs[section.terrain] + 1;
 
-      totalTimeBeforeStops += (time*terrainCoef)/10;
+      totalTimeBeforeStops += (time*terrainCoef);
     }
 
-    // We remove the time of stops, due to energy and wear
+    // Add the time of stops, due to energy and wear
     const energyStopTime = stats.energyConsumption/4 * nbTours;
     const wearStopTime = stats.wear/2 * nbTours;
-    this.raceResult = Math.round((totalTimeBeforeStops * 1000) + energyStopTime + wearStopTime);
+    this.raceResult = Math.round((totalTimeBeforeStops * 10 *nbTours) + energyStopTime + wearStopTime);
     this.minimalMedal = this.selectedRace?.medals?.[0].timeToObtain;
     this.middleMedal = this.selectedRace?.medals?.[1].timeToObtain;
     this.highMedal = this.selectedRace?.medals?.[2].timeToObtain;
