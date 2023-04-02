@@ -155,9 +155,9 @@ export class SimulatorComponent implements OnInit {
     }
 
     // Add the time of stops, due to energy and wear
-    const energyStopTime = stats.energyConsumption/4 * nbTours;
-    const wearStopTime = stats.wear/2 * nbTours;
-    this.raceResult = Math.round((totalTimeBeforeStops * 10 *nbTours) + energyStopTime + wearStopTime);
+    const energyStopTime = stats.energyConsumption/4;
+    const wearStopTime = stats.wear/2;
+    this.raceResult = Math.round(((totalTimeBeforeStops * 10) + energyStopTime + wearStopTime)*nbTours);
     this.minimalMedal = this.selectedRace?.medals?.[0].timeToObtain;
     this.middleMedal = this.selectedRace?.medals?.[1].timeToObtain;
     this.highMedal = this.selectedRace?.medals?.[2].timeToObtain;
