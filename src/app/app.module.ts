@@ -10,7 +10,6 @@ import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShopComponent } from './pages/shop/shop.component';
-import { HistoryComponent } from './components/history/history.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { StatBarComponent } from './components/stat-bar/stat-bar.component';
@@ -34,8 +33,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HistoryComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

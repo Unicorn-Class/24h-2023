@@ -33,6 +33,9 @@ export class RacesComponent implements OnInit {
   faMedal = faMedal;
   fail = faCross;
   clock = faClock;
+  allRun !: Array<RunResult>
+  showHistory = false;
+  historyFind = false;
   private racesService: RacesService = inject(RacesService);
 
   constructor() { }
@@ -45,10 +48,14 @@ export class RacesComponent implements OnInit {
   }
 
   onStart(): void {
+    this.allRun =[]
     this.fetchStatus = 'fetchResult';
     this.racesService.run(this.raceNumber, 11).subscribe(result => {
       this.fetchStatus = 'success';
       this.runResultList = [result, ...this.runResultList];
+      if(this.showHistory){
+          this.getHistory()
+      }
     })
   }
 
@@ -62,6 +69,17 @@ export class RacesComponent implements OnInit {
     forkJoin(runList).subscribe(resultList => {
       this.runResultList = [...resultList, ...this.runResultList];
       this.fetchStatus = 'success';
+    })
+  }
+
+  getHistory() {
+    this.racesService.getAllTeamsBestTeamRaceByRaceId(this.raceNumber,11).subscribe(result  => {
+      this.allRun = result;
+      this.allRun.sort((a : RunResult, b : RunResult) =>
+      {
+        return (a.time! - b.time!);
+      })
+      this.historyFind = true;
     })
   }
 }
