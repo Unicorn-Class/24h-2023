@@ -15,14 +15,35 @@
         <app-flat-button (click)="onStart()">Lancer la course</app-flat-button>
       </div>
     </div>
-    <div class="input-bar">
-      <input placeholder="Puissance" min="0" max="60" type="number" [(ngModel)]="power"/>
-      <input placeholder="Accélération" min="0" max="60" type="number" [(ngModel)]="acceleration"/>
-      <input placeholder="Adhérence" min="0" max="60" type="number" [(ngModel)]="grip"/>
-      <input placeholder="Maniabilité" min="0" max="60" type="number" [(ngModel)]="maniability"/>
-      <input placeholder="Poids" min="0" max="100" type="number" [(ngModel)]="weight"/>
-      <input placeholder="Usure" min="0" max="100" type="number" [(ngModel)]="wear"/>
-      <input placeholder="Consommation" min="0" max="60" type="number" [(ngModel)]="energy"/>
+
+    <h2>Configuration</h2>
+
+    <div class="configuration-container">
+      <div class="input-group">
+        <h3>Valeurs</h3>
+        <div class="input-bar">
+          <input placeholder="Puissance" min="0" max="60" type="number" [(ngModel)]="power"/>
+          <input placeholder="Accélération" min="0" max="60" type="number" [(ngModel)]="acceleration"/>
+          <input placeholder="Adhérence" min="0" max="60" type="number" [(ngModel)]="grip"/>
+          <input placeholder="Maniabilité" min="0" max="60" type="number" [(ngModel)]="maniability"/>
+          <input placeholder="Poids" min="0" max="100" type="number" [(ngModel)]="weight"/>
+          <input placeholder="Usure" min="0" max="100" type="number" [(ngModel)]="wear"/>
+          <input placeholder="Consommation" min="0" max="60" type="number" [(ngModel)]="energy"/>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <h3>Pondérations</h3>
+        <div class="input-bar">
+          <input placeholder="Pondé. Puissance" min="0" type="number" [(ngModel)]="power_ponderation"/>
+          <input placeholder="Pondé. Accélération" min="0" type="number" [(ngModel)]="acceleration_ponderation"/>
+          <input placeholder="Pondé. Adhérence" min="0" type="number" [(ngModel)]="grip_ponderation"/>
+          <input placeholder="Pondé. Maniabilité" min="0" type="number" [(ngModel)]="maniability_ponderation"/>
+          <input placeholder="Pondé. Poids" min="0" type="number" [(ngModel)]="weight_ponderation"/>
+          <input placeholder="Pondé. Usure" min="0" type="number" [(ngModel)]="wear_ponderation"/>
+          <input placeholder="Pondé. Consommation" min="0" type="number" [(ngModel)]="energy_ponderation"/>
+        </div>
+      </div>
     </div>
 
     <h2>Résultats</h2>

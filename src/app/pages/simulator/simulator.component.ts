@@ -41,6 +41,13 @@ export class SimulatorComponent implements OnInit {
   weight!: number;
   energy!: number;
   wear!: number;
+  power_ponderation!: number;
+  acceleration_ponderation!: number;
+  grip_ponderation!: number;
+  maniability_ponderation!: number;
+  weight_ponderation!: number;
+  energy_ponderation!: number;
+  wear_ponderation!: number;
 
   constructor() { }
 

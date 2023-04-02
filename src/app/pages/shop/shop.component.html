@@ -1,6 +1,6 @@
 <div class="container">
   <div class="title-bar">
-    <h1>Shop</h1>
+    <h1>Boutique</h1>
     <input type="text" placeholder="Rechercher..." [(ngModel)]="searchQuery" (ngModelChange)="search($event)" [disabled]="fetchStatus !== 'success'">
   </div>
   <div class="page-content" *ngIf="fetchStatus === 'loading'">
