@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <h2 *ngIf="raceResult">Résultats</h2>
+    <h2 *ngIf="raceResult && this.started">Résultats</h2>
 
     <div class="page-content" *ngIf="fetchStatus === 'fetchResult'">
       <app-spinner></app-spinner>
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div *ngIf="!raceResult" class="no-result">
+    <div *ngIf="!raceResult && this.started" class="no-result">
       Aucun résultat
       </div>
       <div *ngIf="raceResult && selectedRace">
@@ -74,9 +74,6 @@
         <div *ngFor="let medal of selectedRace.medals">
           <span class="medal" ><fa-icon [icon]="faMedal"></fa-icon> {{ medal.type}} : {{ medal.timeToObtain}}</span>
         </div>
-      </div>
-      <div *ngIf="raceResult" class="no-result">
-        Votre temps est de {{raceResult}}.
       </div>
       <div *ngIf="minimalMedal && minimalMedal < raceResult" class="no-result">
         Vous n'obtenez aucune médaille, car il fallait faire moins de {{minimalMedal}}. Looser !

@@ -53,6 +53,7 @@ export class SimulatorComponent implements OnInit {
   energy_ponderation!: number;
   wear_ponderation!: number;
   selectedRace !: Race;
+  started = false;
 
   constructor() { }
 
@@ -66,7 +67,7 @@ export class SimulatorComponent implements OnInit {
 
 
   onStart(): void {
-
+    this.started = true;
     interface S {
       "acceleration": number,
       "energyConsumption": number,
