@@ -52,6 +52,7 @@ export class SimulatorComponent implements OnInit {
   weight_ponderation!: number;
   energy_ponderation!: number;
   wear_ponderation!: number;
+  selectedRace !: Race;
 
   constructor() { }
 
@@ -79,14 +80,14 @@ export class SimulatorComponent implements OnInit {
     }
 
     //const thisRace = this.raceList.find(r => r.id === this.raceNumber);
-    const thisRace = this.raceList[this.raceNumber - 1];
+    this.selectedRace = this.raceList[this.raceNumber - 1];
 
-    if(thisRace === undefined){
+    if(this.selectedRace === undefined){
       return;
     }
 
-    const sections = thisRace.sections;
-    const nbTours = thisRace.laps;
+    const sections = this.selectedRace.sections;
+    const nbTours = this.selectedRace.laps;
 
     if(sections === undefined || nbTours === undefined){
       return;
